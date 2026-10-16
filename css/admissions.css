@@ -1,0 +1,91 @@
+/* Admissions — dark band: image bleeds to the left edge, copy aligns to the container */
+
+.admissions {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: stretch;
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+
+.admissions__media {
+  position: relative;
+  min-height: 640px;
+  overflow: hidden;
+}
+
+.admissions__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 40% 50%;
+}
+
+.admissions__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(72px, 9vw, 128px);
+  padding-left: clamp(40px, 5vw, 80px);
+  /* line the right edge up with the site container */
+  padding-right: max(var(--gutter), calc((100vw - var(--container)) / 2));
+}
+
+.admissions__title {
+  max-width: 14ch;
+  font-size: clamp(2.125rem, 3.4vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.admissions__copy {
+  max-width: 44ch;
+  margin-top: 24px;
+  font-size: clamp(1.0625rem, 1.2vw, 1.125rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.admissions__steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin: 32px 0 0;
+  padding: 20px 0 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.admissions__steps span {
+  margin-right: 6px;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-orange);
+}
+
+.admissions__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 40px;
+}
+
+@media (max-width: 1023px) {
+  .admissions { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .admissions__media { min-height: 560px; }
+  .admissions__panel { padding-left: 40px; }
+}
+
+@media (max-width: 767px) {
+  .admissions { grid-template-columns: 1fr; }
+  .admissions__media { min-height: 0; aspect-ratio: 4 / 3; }
+  .admissions__panel { padding: 56px var(--gutter) 72px; }
+  .admissions__actions { flex-direction: column; align-items: stretch; }
+  .admissions__actions .button { width: 100%; }
+}

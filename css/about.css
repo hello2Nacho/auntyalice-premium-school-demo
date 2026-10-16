@@ -1,0 +1,110 @@
+/* About — asymmetric editorial split */
+
+.about {
+  padding-block: clamp(88px, 11vw, 160px);
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(24px, 3vw, 40px);
+  align-items: center;
+}
+
+.about__media {
+  grid-column: 1 / 6;
+  margin: 0;
+}
+
+.about__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.about__caption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 0.875rem;
+  font-style: italic;
+  font-family: var(--font-display);
+  color: var(--color-muted);
+}
+
+.about__caption::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--color-ochre);
+}
+
+.about__body { grid-column: 7 / 13; }
+
+.about__title {
+  max-width: 16ch;
+  font-size: clamp(2.125rem, 3.8vw, 3.375rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.about__copy {
+  display: grid;
+  gap: 18px;
+  max-width: 52ch;
+  margin-top: 28px;
+  font-size: clamp(1.0625rem, 1.2vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+/* Fact strip: hairline rows, label / value */
+.about__facts {
+  max-width: 52ch;
+  margin: 40px 0 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.about__fact {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about__fact dt {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding-top: 3px;
+}
+
+.about__fact dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  color: var(--color-ink);
+}
+
+@media (max-width: 1023px) {
+  .about__media { grid-column: 1 / 6; }
+  .about__body { grid-column: 6 / 13; }
+  .about__fact { grid-template-columns: 1fr; gap: 4px; }
+}
+
+@media (max-width: 767px) {
+  .about__media,
+  .about__body { grid-column: 1 / -1; }
+  .about__body { margin-top: 48px; }
+  .about__media img { aspect-ratio: 4 / 4.4; object-position: 50% 30%; }
+}

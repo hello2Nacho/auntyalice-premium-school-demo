@@ -1,0 +1,76 @@
+/* Campus — editorial header, full-bleed architectural image, three ruled facility notes */
+
+.campus {
+  padding-block: clamp(88px, 11vw, 160px);
+  background: var(--color-cream);
+}
+
+.campus__head {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  column-gap: clamp(24px, 4vw, 64px);
+  align-items: end;
+}
+
+.campus__title {
+  max-width: 15ch;
+  font-size: clamp(2.25rem, 4.2vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+.campus__intro {
+  max-width: 44ch;
+  font-size: clamp(1.0625rem, 1.2vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+.campus__media {
+  margin: clamp(48px, 6vw, 80px) 0 0;
+}
+
+.campus__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+
+.facilities {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(24px, 3vw, 40px);
+  margin-top: clamp(40px, 5vw, 64px);
+}
+
+.facility {
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.facility__title {
+  font-size: 1.375rem;
+  font-weight: 500;
+}
+
+.facility p {
+  max-width: 34ch;
+  margin-top: 10px;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+@media (max-width: 1023px) {
+  .campus__media img { aspect-ratio: 16 / 9; }
+}
+
+@media (max-width: 767px) {
+  .campus__head { grid-template-columns: 1fr; row-gap: 24px; }
+  .campus__media img { aspect-ratio: 4 / 3; object-position: 45% 55%; }
+  .facilities { grid-template-columns: 1fr; row-gap: 32px; }
+  .facility p { max-width: none; }
+}

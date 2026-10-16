@@ -1,0 +1,225 @@
+/* Aunty Alice College — design tokens, reset, shared primitives */
+
+:root {
+  /* Brand (see docs/01-discovery-and-creative-direction.md §3) */
+  --color-orange: #F07A0A;
+  --color-orange-deep: #B5520A;
+  --color-orange-deeper: #96430A;
+  --color-green: #2F5D34;
+  --color-ochre: #E3C27A;
+  --color-cream: #FBF6EE;
+  --color-ink: #1F1A17;
+  --color-muted: #6B5F55;
+  --color-border: #E8DFD2;
+  --color-white: #FFFFFF;
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 0.3s;
+  --dur-base: 0.5s;
+
+  --container: 1240px;
+  --gutter: clamp(20px, 4vw, 48px);
+
+  --header-h: 80px;
+}
+
+@media (max-width: 1023px) {
+  :root { --header-h: 68px; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--header-h);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+img, video, picture { display: block; max-width: 100%; }
+
+a { color: inherit; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0;
+}
+
+p { margin: 0; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+:focus-visible {
+  outline: 2px solid var(--color-orange-deep);
+  outline-offset: 3px;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--color-ink);
+  color: var(--color-white);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+}
+.skip-link:focus { top: 12px; }
+
+/* Section eyebrow */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-orange-deep);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--color-orange);
+}
+
+/* On dark backgrounds the bright orange passes contrast; the deep orange does not */
+.eyebrow--light { color: var(--color-orange); }
+
+/* Understated text link with a moving arrow and hairline */
+.text-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--color-orange-deep);
+  text-decoration: none;
+}
+
+.text-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+  transform-origin: left;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.text-link:hover::after { opacity: 1; }
+
+.text-link__arrow { transition: transform var(--dur-fast) var(--ease-out); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .text-link:hover .text-link__arrow { transform: translateX(4px); }
+}
+
+/* Scroll reveal (only hidden when JS is running; see js/reveal.js) */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+  }
+  .js [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+.button--lg { min-height: 54px; padding: 0 30px; font-size: 1rem; }
+
+.button--primary {
+  background: var(--color-orange-deep);
+  color: var(--color-white);
+}
+.button--primary:hover { background: var(--color-orange-deeper); }
+
+.button--ghost-light {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.button--ghost-light:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--color-white);
+}
+
+.button--ghost-light:focus-visible { outline-color: var(--color-white); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .button:hover { transform: translateY(-1px); }
+}

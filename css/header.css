@@ -1,0 +1,217 @@
+/* Header / navigation */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: rgba(251, 246, 238, 0.96);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  transition: box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.site-header.is-scrolled { box-shadow: 0 1px 12px rgba(31, 26, 23, 0.06); }
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 100%;
+}
+
+/* Brand lockup — the supplied logo is used unmodified; the clip only hides the
+   screenshot's edge slivers and white corners around the circular mark. */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.brand__logo {
+  flex: none;
+  width: auto;
+  height: 56px;
+  clip-path: ellipse(41% 45% at 51.8% 49.9%);
+}
+
+.brand__text { display: flex; flex-direction: column; min-width: 0; }
+
+.brand__name {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+.brand__motto {
+  margin-top: 2px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-orange-deep);
+  white-space: nowrap;
+}
+
+/* Desktop navigation */
+.site-nav__toggle { display: none; }
+
+.site-nav__panel {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.site-nav__list { display: flex; align-items: center; gap: 4px; }
+
+.site-nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.site-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 8px;
+  height: 1px;
+  background: var(--color-orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.site-nav__link:hover::after,
+.site-nav__link[aria-current="page"]::after { transform: scaleX(1); }
+
+.site-nav__link { white-space: nowrap; }
+
+/* Small laptops: tighten the bar so all six links stay on one line */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .site-header__inner { gap: 16px; }
+  .site-nav__panel { gap: 16px; }
+  .site-nav__list { gap: 0; }
+  .site-nav__link { padding: 0 9px; font-size: 0.875rem; }
+  .site-nav__link::after { left: 9px; right: 9px; }
+  .site-nav__cta { padding: 0 18px; }
+  .brand__logo { height: 50px; }
+  .brand__name { font-size: 1.0625rem; }
+}
+
+/* Tablet & mobile: toggle + full-width panel */
+@media (max-width: 1023px) {
+  /* backdrop-filter would make the header the containing block of the fixed panel */
+  .site-header {
+    background: var(--color-cream);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .brand__logo { height: 46px; }
+  .brand__name { font-size: 1.0625rem; }
+  .brand__motto { font-size: 0.625rem; letter-spacing: 0.12em; }
+
+  .site-nav__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-right: -10px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-ink);
+    cursor: pointer;
+  }
+
+  .site-nav__toggle-bars,
+  .site-nav__toggle-bars::before,
+  .site-nav__toggle-bars::after {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast);
+  }
+  .site-nav__toggle-bars { position: relative; }
+  .site-nav__toggle-bars::before,
+  .site-nav__toggle-bars::after { content: ""; position: absolute; left: 0; }
+  .site-nav__toggle-bars::before { top: -7px; }
+  .site-nav__toggle-bars::after { top: 7px; }
+
+  .site-nav__toggle[aria-expanded="true"] .site-nav__toggle-bars { background: transparent; }
+  .site-nav__toggle[aria-expanded="true"] .site-nav__toggle-bars::before { transform: translateY(7px) rotate(45deg); }
+  .site-nav__toggle[aria-expanded="true"] .site-nav__toggle-bars::after { transform: translateY(-7px) rotate(-45deg); }
+
+  .site-nav__panel {
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px var(--gutter) 32px;
+    background: var(--color-cream);
+    border-top: 1px solid var(--color-border);
+    overflow-y: auto;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity var(--dur-fast) var(--ease-out),
+                transform var(--dur-fast) var(--ease-out),
+                visibility 0s linear var(--dur-fast);
+  }
+
+  .site-nav__panel.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+  }
+
+  .site-nav__list { flex-direction: column; align-items: stretch; gap: 0; }
+
+  .site-nav__list li { border-bottom: 1px solid var(--color-border); }
+
+  .site-nav__link {
+    width: 100%;
+    min-height: 56px;
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+  }
+
+  .site-nav__link::after { left: 0; right: auto; width: 24px; bottom: 14px; }
+
+  .site-nav__cta { margin-top: 28px; min-height: 54px; }
+}
+
+@media (max-width: 380px) {
+  .brand { gap: 10px; }
+  .brand__logo { height: 42px; }
+  .brand__name { font-size: 1rem; }
+}
+
+body.nav-open { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav__panel, .site-nav__link::after, .site-header { transition: none !important; }
+}

@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en-NG">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admissions | Aunty Alice College</title>
+  <meta name="description" content="Begin an application to Aunty Alice College, Mararaba. Demonstration admissions portal.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#FBF6EE">
+  <link rel="icon" href="../assets/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/admissions-portal.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="portal">
+  <a class="skip-link" href="#portal-main">Skip to content</a>
+
+  <header class="portal-header">
+    <div class="container portal-header__inner">
+      <a class="portal-brand" href="/" aria-label="Aunty Alice College, back to the website">
+        <img class="portal-brand__logo" src="../assets/logo.png" alt="" width="412" height="400">
+        <span class="portal-brand__text">
+          <span class="portal-brand__name">Aunty Alice College</span>
+          <span class="portal-brand__label">Admissions</span>
+        </span>
+      </a>
+      <a class="portal-header__back" href="/">
+        <span aria-hidden="true">&larr;</span> Back to Website
+      </a>
+    </div>
+  </header>
+
+  <div class="demo-banner" role="note">
+    <div class="container">Demonstration portal: applications are not sent to the college, and files never leave your device.</div>
+  </div>
+
+  <main id="portal-main">
+    <!-- ================= Landing ================= -->
+    <section class="portal-view landing" data-view="landing" aria-labelledby="landing-title">
+      <div class="landing__grid">
+        <div class="landing__body container-left">
+          <img class="landing__crest" src="../assets/logo.png" alt="Aunty Alice College crest" width="412" height="400">
+          <p class="eyebrow">Admissions</p>
+          <h1 class="landing__title" id="landing-title">Begin your application.</h1>
+          <p class="landing__motto">Knowledge is True Wealth</p>
+          <p class="landing__lede">Apply to Aunty Alice College, Mararaba, in five short steps. You can review and edit everything before you submit.</p>
+
+          <dl class="landing__facts">
+            <div>
+              <dt>Session</dt>
+              <dd>Upcoming academic session</dd>
+            </div>
+            <div>
+              <dt>Levels</dt>
+              <dd>Nursery &amp; Day Care &middot; Secondary College</dd>
+            </div>
+            <div>
+              <dt>Time needed</dt>
+              <dd>About 10 minutes <span class="landing__demo-tag">demo estimate</span></dd>
+            </div>
+          </dl>
+
+          <ol class="landing__steps" aria-label="Application steps">
+            <li><span aria-hidden="true">01</span> Student</li>
+            <li><span aria-hidden="true">02</span> Parent / Guardian</li>
+            <li><span aria-hidden="true">03</span> Academic</li>
+            <li><span aria-hidden="true">04</span> Documents</li>
+            <li><span aria-hidden="true">05</span> Review</li>
+          </ol>
+
+          <div class="landing__actions">
+            <button class="button button--primary button--lg" type="button" data-action="start">Start Application</button>
+            <button class="button button--quiet button--lg" type="button" data-action="resume" hidden>Continue saved application</button>
+            <a class="button button--outline button--lg" href="/">Back to Website</a>
+          </div>
+        </div>
+
+        <figure class="landing__media" aria-hidden="true">
+          <picture>
+            <source srcset="../assets/images/s3-morning-arrival.webp" type="image/webp">
+            <img src="../assets/images/s3-morning-arrival.jpg" alt="" width="1639" height="959">
+          </picture>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= Application ================= -->
+    <section class="portal-view application" data-view="form" aria-labelledby="form-title" hidden>
+      <div class="container application__container">
+        <h1 class="visually-hidden" id="form-title">Application form</h1>
+
+        <nav class="stepper" aria-label="Application progress">
+          <p class="stepper__summary" aria-hidden="true"><span data-step-count>Step 1 of 5</span> &middot; <span data-step-name>Student</span></p>
+          <div class="stepper__bar" aria-hidden="true"><span data-step-bar></span></div>
+          <ol class="stepper__list">
+            <li class="stepper__item" data-step-indicator="1"><span class="stepper__num">1</span><span class="stepper__label">Student</span></li>
+            <li class="stepper__item" data-step-indicator="2"><span class="stepper__num">2</span><span class="stepper__label">Parent / Guardian</span></li>
+            <li class="stepper__item" data-step-indicator="3"><span class="stepper__num">3</span><span class="stepper__label">Academic</span></li>
+            <li class="stepper__item" data-step-indicator="4"><span class="stepper__num">4</span><span class="stepper__label">Documents</span></li>
+            <li class="stepper__item" data-step-indicator="5"><span class="stepper__num">5</span><span class="stepper__label">Review</span></li>
+          </ol>
+        </nav>
+
+        <form class="app-form" data-form novalidate>
+          <!-- Step 1: Student -->
+          <fieldset class="step" data-step="1">
+            <legend class="step__title" tabindex="-1">About the student</legend>
+            <p class="step__intro">Enter the student&rsquo;s details as they appear on their birth certificate.</p>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="studentFirst">First name <span class="req" aria-hidden="true">*</span></label>
+                <input id="studentFirst" name="studentFirst" type="text" autocomplete="off" required>
+              </div>
+              <div class="field">
+                <label for="studentMiddle">Middle name <span class="optional">optional</span></label>
+                <input id="studentMiddle" name="studentMiddle" type="text" autocomplete="off">
+              </div>
+              <div class="field">
+                <label for="studentLast">Surname <span class="req" aria-hidden="true">*</span></label>
+                <input id="studentLast" name="studentLast" type="text" autocomplete="off" required>
+              </div>
+              <div class="field">
+                <label for="studentDob">Date of birth <span class="req" aria-hidden="true">*</span></label>
+                <input id="studentDob" name="studentDob" type="date" required>
+              </div>
+            </div>
+
+            <fieldset class="field field--choices">
+              <legend>Gender <span class="req" aria-hidden="true">*</span></legend>
+              <div class="choices" data-required-group="studentGender">
+                <label class="choice"><input type="radio" name="studentGender" value="Female"> <span>Female</span></label>
+                <label class="choice"><input type="radio" name="studentGender" value="Male"> <span>Male</span></label>
+              </div>
+            </fieldset>
+          </fieldset>
+
+          <!-- Step 2: Parent / Guardian -->
+          <fieldset class="step" data-step="2" hidden>
+            <legend class="step__title" tabindex="-1">Parent or guardian</legend>
+            <p class="step__intro">The college will use these details to contact you about this application.</p>
+
+            <div class="field-grid">
+              <div class="field field--wide">
+                <label for="parentName">Full name <span class="req" aria-hidden="true">*</span></label>
+                <input id="parentName" name="parentName" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="parentRelation">Relationship to student <span class="req" aria-hidden="true">*</span></label>
+                <select id="parentRelation" name="parentRelation" required>
+                  <option value="">Select&hellip;</option>
+                  <option>Mother</option>
+                  <option>Father</option>
+                  <option>Guardian</option>
+                  <option>Other relative</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="parentPhone">Phone number <span class="req" aria-hidden="true">*</span></label>
+                <input id="parentPhone" name="parentPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="e.g. 0803 123 4567" required data-validate="phone">
+              </div>
+              <div class="field field--wide">
+                <label for="parentEmail">Email address <span class="optional">optional</span></label>
+                <input id="parentEmail" name="parentEmail" type="email" autocomplete="email" inputmode="email" data-validate="email">
+              </div>
+              <div class="field field--wide">
+                <label for="parentAddress">Home address <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="parentAddress" name="parentAddress" rows="3" autocomplete="street-address" required></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Step 3: Academic -->
+          <fieldset class="step" data-step="3" hidden>
+            <legend class="step__title" tabindex="-1">Academic details</legend>
+            <p class="step__intro">Tell us where the student would join the college.</p>
+
+            <fieldset class="field field--choices">
+              <legend>Level applying for <span class="req" aria-hidden="true">*</span></legend>
+              <div class="choices choices--cards" data-required-group="level">
+                <label class="choice choice--card"><input type="radio" name="level" value="Nursery & Day Care"> <span><strong>Nursery &amp; Day Care</strong><small>Our youngest learners</small></span></label>
+                <label class="choice choice--card"><input type="radio" name="level" value="Secondary College"> <span><strong>Secondary College</strong><small>Secondary education</small></span></label>
+              </div>
+            </fieldset>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="classApplying">Class applying for <span class="req" aria-hidden="true">*</span></label>
+                <input id="classApplying" name="classApplying" type="text" placeholder="e.g. JSS 1" required aria-describedby="classApplying-hint">
+                <p class="hint" id="classApplying-hint">Write the class as you know it; the college will confirm placement.</p>
+              </div>
+              <div class="field">
+                <label for="previousSchool">Current or previous school <span class="optional">optional</span></label>
+                <input id="previousSchool" name="previousSchool" type="text" autocomplete="off">
+              </div>
+              <div class="field field--wide">
+                <label for="notes">Anything else we should know? <span class="optional">optional</span></label>
+                <textarea id="notes" name="notes" rows="3" aria-describedby="notes-hint"></textarea>
+                <p class="hint" id="notes-hint">For example, learning support or medical needs.</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Step 4: Documents -->
+          <fieldset class="step" data-step="4" hidden>
+            <legend class="step__title" tabindex="-1">Supporting documents</legend>
+            <p class="step__intro">Attach clear photos or scans (PDF, JPG or PNG, up to 5&nbsp;MB each). <strong>Demo:</strong> files stay on your device and are never uploaded.</p>
+
+            <div class="uploads">
+              <div class="upload" data-upload="birthCertificate" data-required="true">
+                <label class="upload__zone" for="birthCertificate">
+                  <span class="upload__title">Birth certificate <span class="req" aria-hidden="true">*</span></span>
+                  <span class="upload__hint">Choose a file</span>
+                  <span class="upload__file" data-file-name></span>
+                </label>
+                <input class="upload__input" id="birthCertificate" name="birthCertificate" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png">
+                <button class="upload__remove" type="button" data-remove hidden>Remove<span class="visually-hidden"> birth certificate</span></button>
+              </div>
+              <div class="upload" data-upload="passportPhoto" data-required="true">
+                <label class="upload__zone" for="passportPhoto">
+                  <span class="upload__title">Passport photograph <span class="req" aria-hidden="true">*</span></span>
+                  <span class="upload__hint">Choose a file</span>
+                  <span class="upload__file" data-file-name></span>
+                </label>
+                <input class="upload__input" id="passportPhoto" name="passportPhoto" type="file" accept=".jpg,.jpeg,.png,image/jpeg,image/png">
+                <button class="upload__remove" type="button" data-remove hidden>Remove<span class="visually-hidden"> passport photograph</span></button>
+              </div>
+              <div class="upload" data-upload="schoolReport">
+                <label class="upload__zone" for="schoolReport">
+                  <span class="upload__title">Latest school report <span class="optional">optional</span></span>
+                  <span class="upload__hint">Choose a file</span>
+                  <span class="upload__file" data-file-name></span>
+                </label>
+                <input class="upload__input" id="schoolReport" name="schoolReport" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png">
+                <button class="upload__remove" type="button" data-remove hidden>Remove<span class="visually-hidden"> school report</span></button>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Step 5: Review -->
+          <fieldset class="step" data-step="5" hidden>
+            <legend class="step__title" tabindex="-1">Review your application</legend>
+            <p class="step__intro">Check each section carefully. Use Edit to make changes.</p>
+
+            <div class="review" data-review></div>
+
+            <label class="consent">
+              <input type="checkbox" name="consent" id="consent" required>
+              <span>I confirm that the information I have given is correct to the best of my knowledge.</span>
+            </label>
+          </fieldset>
+
+          <div class="form-error" data-form-error role="alert" hidden></div>
+
+          <div class="app-form__nav">
+            <button class="button button--outline button--lg" type="button" data-action="back">Back</button>
+            <button class="button button--primary button--lg" type="submit" data-action="next">Continue</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= Success ================= -->
+    <section class="portal-view success" data-view="success" aria-labelledby="success-title" hidden>
+      <div class="container success__container">
+        <div class="success__mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="23" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M15 24.5l6 6 12-13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h1 class="success__title" id="success-title" tabindex="-1">Application complete <span class="success__tag">Demo</span></h1>
+        <p class="success__ref">Reference <strong data-reference>DEMO-2026-0001</strong></p>
+        <p class="success__text">Thank you, <span data-success-name>applicant</span>. This is a demonstration of the Aunty Alice College admissions portal. <strong>No application has been sent to the college</strong>, and no documents have been uploaded.</p>
+        <div class="success__actions">
+          <button class="button button--primary button--lg" type="button" data-action="restart">Start New Application</button>
+          <a class="button button--outline button--lg" href="/">Back to Website</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/admissions-portal.js" defer></script>
+</body>
+</html>
