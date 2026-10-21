@@ -1,0 +1,64 @@
+{
+  "width": 1440,
+  "scale": 2,
+  "headerH": 80,
+  "pageH": 8899,
+  "offsets": {
+    "philosophy": 900,
+    "about": 2181.09375,
+    "admissions": 3221.578125,
+    "academics": 3999.03125,
+    "school-life": 5369.40625,
+    "campus": 6365.203125,
+    "contact": 7734.59375
+  },
+  "imageWidth": 2880,
+  "imageHeight": 17798,
+  "tiles": [
+    {
+      "file": "tiles/desktop-00.png",
+      "top": 0,
+      "height": 2052
+    },
+    {
+      "file": "tiles/desktop-01.png",
+      "top": 2048,
+      "height": 2052
+    },
+    {
+      "file": "tiles/desktop-02.png",
+      "top": 4096,
+      "height": 2052
+    },
+    {
+      "file": "tiles/desktop-03.png",
+      "top": 6144,
+      "height": 2052
+    },
+    {
+      "file": "tiles/desktop-04.png",
+      "top": 8192,
+      "height": 2052
+    },
+    {
+      "file": "tiles/desktop-05.png",
+      "top": 10240,
+      "height": 2052
+    },
+    {
+      "file": "tiles/desktop-06.png",
+      "top": 12288,
+      "height": 2052
+    },
+    {
+      "file": "tiles/desktop-07.png",
+      "top": 14336,
+      "height": 2052
+    },
+    {
+      "file": "tiles/desktop-08.png",
+      "top": 16384,
+      "height": 1414
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "width": 390,
+  "scale": 3,
+  "headerH": 68,
+  "pageH": 10512,
+  "offsets": {
+    "philosophy": 844,
+    "about": 2628.75,
+    "admissions": 4117.6875,
+    "academics": 5105.71875,
+    "school-life": 6614.28125,
+    "campus": 7734.34375,
+    "contact": 8957.96875
+  },
+  "imageWidth": 1170,
+  "imageHeight": 31536,
+  "tiles": [
+    {
+      "file": "tiles/mobile-00.png",
+      "top": 0,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-01.png",
+      "top": 1536,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-02.png",
+      "top": 3072,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-03.png",
+      "top": 4608,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-04.png",
+      "top": 6144,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-05.png",
+      "top": 7680,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-06.png",
+      "top": 9216,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-07.png",
+      "top": 10752,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-08.png",
+      "top": 12288,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-09.png",
+      "top": 13824,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-10.png",
+      "top": 15360,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-11.png",
+      "top": 16896,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-12.png",
+      "top": 18432,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-13.png",
+      "top": 19968,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-14.png",
+      "top": 21504,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-15.png",
+      "top": 23040,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-16.png",
+      "top": 24576,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-17.png",
+      "top": 26112,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-18.png",
+      "top": 27648,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-19.png",
+      "top": 29184,
+      "height": 1540
+    },
+    {
+      "file": "tiles/mobile-20.png",
+      "top": 30720,
+      "height": 816
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Aunty Alice College mockups</title>
+<style>
+  :root {
+    --brand-orange: #F07A0A;
+    --brand-green: #2F5D34;
+    --cream: #FBF6EE;
+    --ink: #1F1A17;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 3200px; height: 2000px; overflow: hidden; background: transparent; }
+  .stage { position: relative; width: 3200px; height: 2000px; overflow: hidden; }
+  .bg-brand { background: url(assets/brand-background.png) center / cover; }
+  .bg-studio {
+    background:
+      radial-gradient(70% 60% at 50% 38%, #FFFFFF 0%, rgba(255,255,255,0) 70%),
+      linear-gradient(180deg, #F6F3EE 0%, #EFEAE3 62%, #E8E2DA 100%);
+  }
+  .bg-dark {
+    background:
+      radial-gradient(55% 55% at 50% 42%, rgba(240,122,10,0.16) 0%, rgba(240,122,10,0) 70%),
+      radial-gradient(90% 80% at 50% 100%, #1C1714 0%, #0E0B0A 100%);
+  }
+  .bg-none { background: transparent; }
+
+  .abs { position: absolute; }
+
+  /* ---------- glass reflection shared by both devices ---------- */
+  .glass {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(118deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.05) 28%, rgba(255,255,255,0) 28.2%),
+      linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 30%);
+  }
+
+  /* ---------- MacBook Pro (front view, 2200px wide lid) ---------- */
+  .mac { position: absolute; width: 2380px; height: 1530px; }
+  .mac__lid {
+    position: absolute; left: 90px; top: 0; width: 2200px; height: 1440px;
+    border-radius: 54px 54px 10px 10px;
+    background: linear-gradient(180deg, #C9CCD1, #A9ADB3);
+    padding: 5px;
+  }
+  .mac__bezel {
+    position: relative; width: 100%; height: 100%;
+    border-radius: 50px 50px 6px 6px;
+    background: #0A0A0B;
+    box-shadow: inset 0 0 0 2px #1B1B1E;
+  }
+  .mac__screen {
+    position: absolute; left: 47px; top: 47px; width: 2096px; height: 1310px; /* 16:10 */
+    border-radius: 14px; overflow: hidden; background: var(--cream);
+  }
+  .mac__screen img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .mac__notch {
+    position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+    width: 210px; height: 66px; background: #0A0A0B; border-radius: 0 0 18px 18px; z-index: 2;
+  }
+  .mac__notch::after { /* camera */
+    content: ""; position: absolute; left: 50%; top: 18px; width: 13px; height: 13px; transform: translateX(-50%);
+    border-radius: 50%; background: radial-gradient(circle at 40% 40%, #2A3240 0%, #0B0D12 60%);
+  }
+  .mac__chin { position: absolute; left: 0; right: 0; bottom: 0; height: 36px; }
+  .mac__hinge {
+    position: absolute; left: 260px; top: 1440px; width: 1860px; height: 18px;
+    background: linear-gradient(180deg, #2B2C30 0%, #5A5D63 45%, #232427 100%);
+    border-radius: 0 0 6px 6px;
+  }
+  .mac__base {
+    position: absolute; left: 0; top: 1452px; width: 2380px; height: 58px;
+    background: linear-gradient(180deg, #E6E8EB 0%, #CDD0D4 30%, #A8ACB2 75%, #8D9197 100%);
+    border-radius: 6px 6px 40px 40px / 6px 6px 54px 54px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.8), inset 0 -3px 6px rgba(0,0,0,0.18);
+  }
+  .mac__base::before { /* thumb cut-out */
+    content: ""; position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+    width: 340px; height: 18px; border-radius: 0 0 22px 22px;
+    background: linear-gradient(180deg, #A4A8AE, #C4C7CB);
+  }
+  .mac__feet { position: absolute; left: 160px; right: 160px; top: 1506px; height: 8px; }
+  .mac__feet::before, .mac__feet::after {
+    content: ""; position: absolute; top: 0; width: 120px; height: 8px; border-radius: 0 0 6px 6px; background: #2A2A2C;
+  }
+  .mac__feet::before { left: 0; } .mac__feet::after { right: 0; }
+  .ground {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(25,12,0,0.55), rgba(25,12,0,0.22) 55%, rgba(25,12,0,0) 100%);
+    filter: blur(14px);
+  }
+  .bg-dark .ground { background: radial-gradient(closest-side, rgba(0,0,0,0.8), rgba(0,0,0,0.35) 55%, rgba(0,0,0,0) 100%); }
+
+  /* ---------- iPhone 15 Pro (560px wide body) ---------- */
+  .phone { position: absolute; width: 560px; height: 1158px; }
+  .phone__body {
+    position: absolute; inset: 0; border-radius: 92px;
+    background: linear-gradient(135deg, #CFCBC4 0%, #8E8A84 18%, #BEBAB3 38%, #77736E 62%, #B9B5AE 82%, #8A8680 100%);
+    box-shadow:
+      inset 0 0 0 2px rgba(255,255,255,0.35),
+      inset 0 0 0 5px rgba(60,58,55,0.55);
+  }
+  .phone__bezel {
+    position: absolute; inset: 9px; border-radius: 84px; background: #060606;
+    box-shadow: inset 0 0 0 1.5px #2a2a2a;
+  }
+  .phone__screen {
+    position: absolute; left: 27px; top: 27px; right: 27px; bottom: 27px;
+    border-radius: 66px; overflow: hidden; background: var(--cream);
+  }
+  .phone__status {
+    position: relative; height: 70px; background: rgba(251,246,238,1);
+    font: 600 22px/1 -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif; color: var(--ink);
+  }
+  .phone__status .time { position: absolute; left: 62px; top: 33px; letter-spacing: 0.01em; }
+  .phone__status .icons { position: absolute; right: 44px; top: 32px; display: flex; gap: 8px; align-items: center; }
+  .phone__status--dark { color: #fff; }
+  .phone__shot { display: block; width: 100%; height: auto; }
+  .phone__island {
+    position: absolute; left: 50%; top: 22px; transform: translateX(-50%);
+    width: 160px; height: 46px; border-radius: 23px; background: #000; z-index: 3;
+  }
+  .phone__island::after {
+    content: ""; position: absolute; right: 16px; top: 14px; width: 18px; height: 18px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #1E2638 0%, #05060A 65%);
+  }
+  .phone__btn { position: absolute; width: 7px; border-radius: 3px; background: linear-gradient(90deg, #7D7973, #BEBAB3 50%, #7D7973); }
+  .phone__btn--action { left: -5px; top: 210px; height: 62px; }
+  .phone__btn--volup { left: -5px; top: 318px; height: 104px; }
+  .phone__btn--voldown { left: -5px; top: 446px; height: 104px; }
+  .phone__btn--power { right: -5px; top: 352px; height: 164px; }
+
+  /* ---------- 3D scene ---------- */
+  .scene3d { position: absolute; inset: 0; perspective: 5200px; perspective-origin: 50% 30%; }
+  .mac3d { position: absolute; left: 520px; top: 380px; width: 2200px; height: 1440px; transform-style: preserve-3d;
+           transform: rotateX(6deg) rotateY(-26deg); }
+  .mac3d .mac__lid { left: 0; top: 0; transform-origin: 50% 100%; transform: rotateX(-12deg); }
+  .mac3d__base {
+    position: absolute; left: -40px; top: 1440px; width: 2280px; height: 1520px; transform-origin: 50% 0;
+    transform: rotateX(90deg); border-radius: 0 0 60px 60px;
+    background: linear-gradient(180deg, #C6C9CE 0%, #D8DADD 45%, #CBCED2 100%);
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.5);
+  }
+  .mac3d__keys {
+    position: absolute; left: 280px; right: 280px; top: 90px; height: 680px; border-radius: 18px;
+    background:
+      repeating-linear-gradient(90deg, #BFC2C6 0 12px, transparent 12px 132px),
+      repeating-linear-gradient(180deg, #BFC2C6 0 12px, transparent 12px 116px),
+      #1C1C1E;
+    background-position: 0 0, 0 0;
+    box-shadow: inset 0 0 0 12px #BFC2C6;
+  }
+  .mac3d__pad { position: absolute; left: 50%; top: 840px; width: 780px; height: 500px; transform: translateX(-50%);
+    border-radius: 22px; background: linear-gradient(180deg, #C1C4C8, #CDD0D3); box-shadow: inset 0 0 0 2px rgba(0,0,0,0.06); }
+  .mac3d__edge {
+    position: absolute; left: -40px; top: 1440px; width: 2280px; height: 56px; transform-origin: 50% 0;
+    transform: translateZ(1520px); border-radius: 0 0 40px 40px;
+    background: linear-gradient(180deg, #DADCDF, #9EA2A8);
+  }
+  .mac3d__back {
+    position: absolute; left: 0; top: 0; width: 2200px; height: 1440px; transform-origin: 50% 100%;
+    transform: rotateX(-12deg) translateZ(-12px); border-radius: 54px 54px 10px 10px; background: #A7ABB1;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const SHOTS = '../../showcase/screens/';
+const params = new URLSearchParams(location.search);
+const scene = params.get('scene') || 'a';
+const bg = params.get('bg') || 'brand';
+
+const statusIcons = (dark) => `
+  <svg width="34" height="22" viewBox="0 0 34 22"><g fill="${dark ? '#fff' : '#1F1A17'}">
+    <rect x="0" y="14" width="6" height="8" rx="1.5"/><rect x="9" y="10" width="6" height="12" rx="1.5"/>
+    <rect x="18" y="5" width="6" height="17" rx="1.5"/><rect x="27" y="0" width="6" height="22" rx="1.5"/></g></svg>
+  <svg width="30" height="22" viewBox="0 0 30 22"><path fill="${dark ? '#fff' : '#1F1A17'}" d="M15 4.5c4.2 0 8 1.6 10.9 4.3l2.2-2.3C24.6 3.1 20 1 15 1S5.4 3.1 1.9 6.5l2.2 2.3C7 6.1 10.8 4.5 15 4.5zm0 6c2.6 0 5 1 6.8 2.7l2.2-2.3C21.6 8.6 18.4 7.2 15 7.2s-6.6 1.4-9 3.7l2.2 2.3c1.8-1.7 4.2-2.7 6.8-2.7zm0 6c-1 0-1.9.4-2.6 1L15 20l2.6-2.5c-.7-.6-1.6-1-2.6-1z"/></svg>
+  <svg width="50" height="24" viewBox="0 0 50 24"><rect x="1" y="1" width="42" height="22" rx="7" fill="none" stroke="${dark ? '#fff' : '#1F1A17'}" stroke-opacity="0.4" stroke-width="2"/>
+    <rect x="4" y="4" width="34" height="16" rx="4.5" fill="${dark ? '#fff' : '#1F1A17'}"/><rect x="45" y="8" width="3.5" height="8" rx="1.5" fill="${dark ? '#fff' : '#1F1A17'}" fill-opacity="0.4"/></svg>`;
+
+function mac(shot) {
+  return `
+    <div class="mac__lid"><div class="mac__bezel">
+      <div class="mac__notch"></div>
+      <div class="mac__screen"><img src="${SHOTS}${shot}"><div class="glass"></div></div>
+    </div></div>
+    <div class="mac__hinge"></div>
+    <div class="mac__base"></div>`;
+}
+
+// The status bar takes the colour of the page header behind it, like Safari does.
+function phone(shot) {
+  return `
+    <div class="phone__btn phone__btn--action"></div>
+    <div class="phone__btn phone__btn--volup"></div>
+    <div class="phone__btn phone__btn--voldown"></div>
+    <div class="phone__btn phone__btn--power"></div>
+    <div class="phone__body"></div>
+    <div class="phone__bezel"></div>
+    <div class="phone__screen">
+      <div class="phone__status"><span class="time">9:41</span><span class="icons">${statusIcons(false)}</span></div>
+      <img class="phone__shot" src="${SHOTS}${shot}">
+      <div class="glass"></div>
+    </div>
+    <div class="phone__island"></div>`;
+}
+
+const el = (cls, style, html) => `<div class="${cls}" style="${style}">${html || ''}</div>`;
+
+const scenes = {
+  // MacBook centred, iPhone overlapping front-right.
+  a: () =>
+    el('ground', 'left:360px;top:1630px;width:2240px;height:130px') +
+    el('mac', 'left:290px;top:250px;transform:scale(0.95);transform-origin:0 0', mac('desktop-hero.png')) +
+    el('ground', 'left:2280px;top:1755px;width:640px;height:110px') +
+    el('phone', 'left:2310px;top:720px;transform:scale(0.92);transform-origin:0 0;filter:drop-shadow(0 40px 60px rgba(30,12,0,0.35)) drop-shadow(0 12px 18px rgba(30,12,0,0.25))', phone('mobile-hero.png')),
+
+  // Three iPhones, the middle one raised.
+  c: () =>
+    el('ground', 'left:620px;top:1760px;width:660px;height:90px') +
+    el('ground', 'left:1270px;top:1700px;width:660px;height:90px;opacity:0.7') +
+    el('ground', 'left:1920px;top:1760px;width:660px;height:90px') +
+    el('phone', 'left:670px;top:470px;transform:scale(1.1);transform-origin:0 0;filter:drop-shadow(0 50px 70px rgba(0,0,0,0.55))', phone('mobile-philosophy.png')) +
+    el('phone', 'left:1292px;top:310px;transform:scale(1.1);transform-origin:0 0;filter:drop-shadow(0 70px 90px rgba(0,0,0,0.6))', phone('mobile-hero.png')) +
+    el('phone', 'left:1914px;top:470px;transform:scale(1.1);transform-origin:0 0;filter:drop-shadow(0 50px 70px rgba(0,0,0,0.55))', phone('mobile-admissions.png')),
+
+  // Angled 3D MacBook with the iPhone leaning beside it.
+  d: () =>
+    el('ground', 'left:330px;top:1470px;width:2100px;height:260px;transform:rotate(-7deg)') +
+    `<div class="scene3d"><div class="mac3d" style="transform:translate(-20px,-170px) scale(0.64) rotateX(6deg) rotateY(-26deg)">
+       <div class="mac3d__base"><div class="mac3d__keys"></div><div class="mac3d__pad"></div></div>
+       <div class="mac3d__edge"></div>
+       <div class="mac__lid">${'<div class="mac__bezel"><div class="mac__notch"></div><div class="mac__screen"><img src="' + SHOTS + 'desktop-hero.png"><div class="glass"></div></div></div>'}</div>
+     </div></div>` +
+    el('ground', 'left:2380px;top:1690px;width:620px;height:100px;transform:rotate(-4deg)') +
+    el('phone', 'left:2400px;top:560px;transform:rotate(-9deg) scale(0.94);transform-origin:50% 100%;filter:drop-shadow(-30px 50px 60px rgba(30,12,0,0.38)) drop-shadow(0 14px 20px rgba(30,12,0,0.25))', phone('mobile-academics.png')),
+};
+
+const layout = scene === 'b' ? 'a' : scene;
+document.getElementById('root').innerHTML = `<div class="stage bg-${bg}">${scenes[layout]()}</div>`;
+
+Promise.all([...document.images].map((i) => i.decode().catch(() => {}))).then(() => { document.body.dataset.ready = '1'; });
+</script>
+</body>
+</html>
